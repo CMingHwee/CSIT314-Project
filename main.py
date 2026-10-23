@@ -1,5 +1,6 @@
 class userAccount:
-    #initialization
+    
+    # to initialise the variables
     def __init__(self, name, email, password, role):
         self.__name = name
         self.__email = email
@@ -7,7 +8,7 @@ class userAccount:
         self.__role = role
         # role = User Admin / Interior Design / Customer / Platform Management
 
-    # getter
+    # get variables
     def getName(self):
         return self.__name
     def getEmail(self):
@@ -17,7 +18,7 @@ class userAccount:
     def getrole(self):
         return self.__role
     
-    # setter
+    # set variables
     def setName(self, name):
         self.__name = name
     def setEmail(self, email):
@@ -28,5 +29,7 @@ class userAccount:
         self.__role = role
 
 class userAdmin:
+
+    # to view user profile
     def viewList():
         return userAccount
