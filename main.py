@@ -27,10 +27,6 @@ class userAccount:
     def setRole(self, role):
         self.__role = role
 
-class login:
-    userAccount()
-
-
-
-def main():
-
+class userAdmin:
+    def viewList():
+        return userAccount
