@@ -5,6 +5,7 @@ class userAccount:
         self.__email = email
         self.__password = password
         self.__role = role
+        # role = User Admin / Interior Design / Customer / Platform Management
 
     # getter
     def getName(self):
@@ -26,6 +27,10 @@ class userAccount:
     def setRole(self, role):
         self.__role = role
 
+class login:
+    userAccount()
+
+
+
 def main():
-    exit
 
