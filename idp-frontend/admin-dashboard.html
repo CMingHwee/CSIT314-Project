@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Admin Dashboard · IDP Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-area="admin" data-nav="dashboard" data-tables="user_accounts">
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main">
+    <header class="page-header">
+      <div>
+        <div class="breadcrumb">Dashboard</div>
+        <h1>User Admin Dashboard</h1>
+      </div>
+      <div class="user-chip" id="user-chip"></div>
+    </header>
+
+    <div id="page-banner"></div>
+
+    <div id="page-content">
+      <section class="card">
+        <p class="section-label">Quick links</p>
+        <div class="tiles">
+          <a class="tile" href="user-accounts.html">
+            <strong>User Accounts</strong>
+            <span>View every account. Update or suspend from an account's details.</span>
+          </a>
+          <a class="tile" href="create-account.html">
+            <strong>Create Account</strong>
+            <span>Add a user and assign their role.</span>
+          </a>
+          <a class="tile" href="search-accounts.html">
+            <strong>Search Accounts</strong>
+            <span>Find accounts by username, email or role.</span>
+          </a>
+          <a class="tile" href="user-profiles.html">
+            <strong>User Profiles</strong>
+            <span>View, create, edit, suspend and search user profiles.</span>
+          </a>
+        </div>
+      </section>
+      <p class="hint">Demo data tools (download or reload the CSV files) are on the <a href="demo-data.html">demo data page</a>.</p>
+    </div>
+  </main>
+</div>
+
+<script src="js/data/CsvStore.js"></script>
+<script src="js/util/validation.js"></script>
+<script src="js/util/session.js"></script>
+<script src="js/entity/UserAccount.js"></script>
+<script src="js/controller/UserAdminLogoutController.js"></script>
+<script src="js/boundary/ui.js"></script>
+<script src="js/boundary/UserAdminLogoutPage.js"></script>
+<script src="js/boundary/Layout.js"></script>
+<script>Layout.start(() => {});</script>
+</body>
+</html>

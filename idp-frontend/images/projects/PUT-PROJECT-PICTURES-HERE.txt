@@ -1,0 +1,1 @@
+Put interior design project pictures here, then list the file names in the 'images' column of data/projects.csv. See ../README.txt.

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Suspend User Account · IDP Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-area="admin" data-nav="user-accounts" data-tables="user_accounts,activity_log">
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main">
+    <header class="page-header">
+      <div>
+        <div class="breadcrumb">
+          User Management / <a href="user-accounts.html">User Accounts</a> / <span id="crumb-user">…</span>
+        </div>
+        <h1>Suspend User Account</h1>
+      </div>
+      <div class="user-chip" id="user-chip"></div>
+    </header>
+
+    <div id="page-banner"></div>
+
+    <div id="page-content">
+      <!-- Suspend User Account -->
+      <section class="card narrow" id="account-card" hidden>
+        <p class="section-label">Account details</p>
+        <dl class="details">
+          <div><dt>Username</dt><dd id="d-username"></dd></div>
+          <div><dt>Email</dt><dd id="d-email"></dd></div>
+          <div><dt>Phone</dt><dd id="d-phone"></dd></div>
+          <div><dt>Role</dt><dd id="d-role"></dd></div>
+          <div><dt>Status</dt><dd id="d-status"></dd></div>
+        </dl>
+        <div class="actions">
+          <a class="btn btn-secondary" id="back-link" href="user-accounts.html">Back</a>
+          <button class="btn btn-primary" type="button" id="suspend-btn">Suspend Account</button>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<!-- Confirmation dialog -->
+<div class="modal-backdrop" id="confirm-modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+    <h2 id="confirm-title">Suspend this account?</h2>
+    <p>Status changes to <strong>Inactive</strong> and this user can no longer log in.
+       Account data is kept, so the suspension can be reversed later.</p>
+    <div class="actions">
+      <button class="btn btn-secondary" type="button" id="confirm-cancel">Cancel</button>
+      <button class="btn btn-primary" type="button" id="confirm-yes">Yes, suspend</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/data/CsvStore.js"></script>
+<script src="js/util/validation.js"></script>
+<script src="js/entity/UserAccount.js"></script>
+<script src="js/util/session.js"></script>
+<script src="js/entity/ActivityLog.js"></script>
+<script src="js/controller/SuspendUserAccountController.js"></script>
+<script src="js/controller/UserAdminLogoutController.js"></script>
+<script src="js/boundary/ui.js"></script>
+<script src="js/boundary/UserAdminLogoutPage.js"></script>
+<script src="js/boundary/Layout.js"></script>
+<script src="js/boundary/SuspendUserAccountPage.js"></script>
+</body>
+</html>

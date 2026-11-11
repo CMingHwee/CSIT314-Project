@@ -1,0 +1,1 @@
+Put people's photos here, then put the file name in the 'photo' column of data/user_profiles.csv. See ../README.txt.

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo CSV Data · IDP Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-area="public">
+  <header class="public-top">
+    <div class="logo" aria-hidden="true">LOGO</div>
+    IDP Platform · Demo data
+  </header>
+
+  <main class="customer-main">
+    <div id="page-banner"></div>
+
+    <div id="page-content">
+      <!-- Not a user story: a helper for demos and testing. No login needed. -->
+      <section class="card" id="csv-data">
+        <div class="card-head">
+          <p class="section-label">CSV data</p>
+          <button class="btn btn-secondary btn-small" type="button" id="reset-btn">Reload from CSV files</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>File</th><th>Rows</th><th><span class="visually-hidden">Action</span></th></tr></thead>
+            <tbody id="data-body"></tbody>
+          </table>
+        </div>
+        <p class="hint" style="margin-top:12px">
+          Changes are saved in this browser in CSV format. Download a file to get the updated CSV,
+          then replace the one in the <code>data</code> folder if you want to keep it.
+          “Reload from CSV files” discards browser changes and reads the files again — useful before a demo.
+        </p>
+      </section>
+      <p class="public-foot"><a href="index.html">Home</a> · <a href="login.html">Main login</a> · <a href="admin-login.html">Admin Portal</a></p>
+    </div>
+  </main>
+
+<script src="js/data/CsvStore.js"></script>
+<script src="js/util/validation.js"></script>
+<script src="js/entity/UserAccount.js"></script>
+<script src="js/boundary/ui.js"></script>
+<script src="js/boundary/Layout.js"></script>
+<script>
+  Layout.start(() => {
+    const body = UI.el('data-body');
+    body.innerHTML = Object.entries(CsvStore.TABLES).map(([table, t]) => `
+      <tr>
+        <td><code>${UI.escape(t.path)}</code></td>
+        <td>${UI.num(CsvStore.count(table))}</td>
+        <td style="text-align:right">
+          <button class="btn btn-secondary btn-small" type="button" data-download="${table}">Download CSV</button>
+        </td>
+      </tr>`).join('');
+
+    body.addEventListener('click', e => {
+      const btn = e.target.closest('[data-download]');
+      if (btn) CsvStore.download(btn.dataset.download);
+    });
+
+    UI.el('reset-btn').addEventListener('click', () => {
+      if (confirm('Discard all changes made in this browser and reload the original CSV files?')) {
+        CsvStore.reset();
+        try { sessionStorage.clear(); } catch { /* ignore */ }
+        UI.setFlash('success', 'Demo data reloaded from the CSV files. You have been logged out.');
+        location.reload();
+      }
+    });
+  });
+</script>
+</body>
+</html>

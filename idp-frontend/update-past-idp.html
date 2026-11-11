@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Update Past IDP · IDP Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-area="designer" data-nav="my-projects" data-tables="user_accounts,companies,projects,activity_log">
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main">
+    <header class="page-header">
+      <div>
+        <div class="breadcrumb">My Projects / <a href="past-idps.html">Past IDPs</a> / <a href="#" id="crumb-name">…</a> / Update</div>
+        <h1>Update Past IDP</h1>
+      </div>
+      <span class="pill" id="editing-pill" hidden>Editing</span>
+    </header>
+
+    <nav class="tabs tabs-top" aria-label="My Projects">
+      <a href="my-projects.html">Current IDPs</a>
+      <a href="past-idps.html" aria-current="page">Past IDPs (portfolio)</a>
+    </nav>
+
+    <div id="page-banner"></div>
+
+    <div id="page-content">
+      <!-- Update Past IDP -->
+      <form class="card" id="idp-form" novalidate hidden>
+        <p class="section-label">Completed project details</p>
+        <div class="grid-2">
+          <div class="field span-2 w-wide" data-field="name">
+            <label for="name">Name *</label>
+            <input id="name" name="name" autocomplete="off">
+            <span class="field-error"></span>
+          </div>
+          <div class="field" data-field="completionDate">
+            <label for="completionDate">Completion Date *</label>
+            <input id="completionDate" name="completionDate" type="date">
+            <span class="field-error"></span>
+            <span class="hint" id="date-hint"></span>
+          </div>
+          <div class="field span-2 w-wide" data-field="description">
+            <label for="description">Description *</label>
+            <textarea id="description" name="description"></textarea>
+            <span class="field-error"></span>
+          </div>
+        </div>
+        <div class="actions">
+          <a class="btn btn-secondary" id="cancel-link" href="past-idps.html">Cancel</a>
+          <button class="btn btn-primary" type="submit">Save</button>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+<script src="js/data/CsvStore.js"></script>
+<script src="js/util/validation.js"></script>
+<script src="js/util/session.js"></script>
+<script src="js/util/dates.js"></script>
+<script src="js/entity/UserAccount.js"></script>
+<script src="js/entity/CompanyInfo.js"></script>
+<script src="js/entity/Project.js"></script>
+<script src="js/entity/ActivityLog.js"></script>
+<script src="js/util/idp-rules.js"></script>
+<script src="js/controller/UpdatePastIDPController.js"></script>
+<script src="js/controller/LogoutController.js"></script>
+<script src="js/boundary/ui.js"></script>
+<script src="js/boundary/LogoutPage.js"></script>
+<script src="js/boundary/Layout.js"></script>
+<script src="js/boundary/UpdatePastIDPPage.js"></script>
+</body>
+</html>

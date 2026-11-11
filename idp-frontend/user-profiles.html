@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Profiles · IDP Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-area="admin" data-nav="user-profiles" data-tables="user_accounts,user_profiles">
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main">
+    <header class="page-header">
+      <div>
+        <div class="breadcrumb">User Profiles<span id="crumb-user"></span></div>
+        <h1>View User Profile</h1>
+      </div>
+      <div class="user-chip" id="user-chip"></div>
+    </header>
+
+    <nav class="tabs tabs-top" aria-label="User Profiles">
+      <a href="user-profiles.html" aria-current="page">All Profiles</a>
+      <a href="create-profile.html">Create Profile</a>
+      <a href="search-profiles.html">Search Profiles</a>
+    </nav>
+
+    <div id="page-banner"></div>
+
+    <div id="page-content">
+      <!-- View User Profile — all profiles -->
+      <section class="card" aria-label="All user profiles">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Username</th><th>Name</th><th>Role</th><th>Company</th><th>Location</th><th>Status</th>
+                <th><span class="visually-hidden">Action</span></th>
+              </tr>
+            </thead>
+            <tbody id="profiles-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- View User Profile — selected profile -->
+      <section class="card" id="profile-card" hidden aria-live="polite">
+        <div class="card-head" style="justify-content:flex-start;gap:14px">
+          <div id="p-photo"></div>
+          <p class="section-label" id="profile-title"></p>
+        </div>
+        <dl class="details">
+          <div><dt>First Name</dt><dd id="p-first"></dd></div>
+          <div><dt>Last Name</dt><dd id="p-last"></dd></div>
+          <div class="full"><dt>Address</dt><dd id="p-address"></dd></div>
+        </dl>
+        <hr class="divider">
+        <p class="section-label">Professional details</p>
+        <dl class="details">
+          <div><dt>Company Name</dt><dd id="p-company"></dd></div>
+          <div><dt>Company Registration No.</dt><dd id="p-regno"></dd></div>
+        </dl>
+        <div class="actions">
+          <a class="btn btn-secondary" id="suspend-link" href="#">Suspend Profile</a>
+          <a class="btn btn-primary" id="edit-link" href="#">Edit Profile</a>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<script src="js/data/CsvStore.js"></script>
+<script src="js/util/validation.js"></script>
+<script src="js/util/session.js"></script>
+<script src="js/entity/UserAccount.js"></script>
+<script src="js/entity/UserProfile.js"></script>
+<script src="js/controller/ViewUserProfileController.js"></script>
+<script src="js/controller/UserAdminLogoutController.js"></script>
+<script src="js/boundary/ui.js"></script>
+<script src="js/boundary/UserAdminLogoutPage.js"></script>
+<script src="js/boundary/Layout.js"></script>
+<script src="js/boundary/ViewUserProfilePage.js"></script>
+</body>
+</html>

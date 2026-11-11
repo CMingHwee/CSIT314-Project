@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Company Information · IDP Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-area="designer" data-nav="company-profile" data-tables="user_accounts,companies,activity_log">
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main">
+    <header class="page-header">
+      <div>
+        <div class="breadcrumb">Company Profile</div>
+        <h1>Company Information</h1>
+      </div>
+      <div class="header-actions" id="header-actions" hidden>
+        <button class="btn btn-danger-outline btn-small" type="button" id="delete-btn">Delete Company Info</button>
+        <a class="btn btn-primary btn-small" href="update-company.html">Edit</a>
+      </div>
+    </header>
+
+    <nav class="tabs tabs-top" aria-label="Company Profile sections">
+      <a href="company-profile.html" aria-current="page">Company Info</a>
+      <a href="analytics.html">Portfolio Analytics</a>
+    </nav>
+
+    <div id="page-banner"></div>
+
+    <div id="page-content">
+      <!-- Alternate flow: no company yet -->
+      <section class="card empty-state" id="no-company" hidden>
+        <p id="no-company-text"></p>
+        <a class="btn btn-primary" href="create-company.html">Create Company Info</a>
+      </section>
+
+      <section class="card" id="company-card" hidden>
+        <!-- Search Company Information -->
+        <form id="search-form" novalidate role="search">
+          <div class="search-row">
+            <div class="field field-term" data-field="term">
+              <label for="term" class="visually-hidden">Search within your company details</label>
+              <input id="term" name="term" placeholder="Search within your company details" autocomplete="off">
+              <span class="field-error"></span>
+            </div>
+            <button class="btn btn-secondary btn-small" type="submit" style="margin-top:0">Search</button>
+          </div>
+        </form>
+
+        <hr class="divider">
+
+        <div class="card-head">
+          <p class="section-label" id="details-title">Read-only · as customers will see it</p>
+          <button class="btn btn-secondary btn-small" type="button" id="clear-search" hidden>Clear search</button>
+        </div>
+
+        <!-- View Company Information -->
+        <dl class="details" id="company-details"></dl>
+      </section>
+    </div>
+  </main>
+</div>
+
+<!-- Delete Company Information — confirmation -->
+<div class="modal-backdrop" id="delete-modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="delete-title">
+    <h2 id="delete-title">Delete company information?</h2>
+    <p><strong>Are you sure? This action cannot be undone.</strong></p>
+    <p>Your company will no longer be visible on the platform, and your projects will be hidden from customers.</p>
+    <div class="actions">
+      <button class="btn btn-secondary" type="button" id="delete-cancel">Cancel</button>
+      <button class="btn btn-danger" type="button" id="delete-confirm">Delete</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/data/CsvStore.js"></script>
+<script src="js/util/validation.js"></script>
+<script src="js/util/session.js"></script>
+<script src="js/entity/UserAccount.js"></script>
+<script src="js/entity/CompanyInfo.js"></script>
+<script src="js/entity/ActivityLog.js"></script>
+<script src="js/controller/ViewCompanyInfoController.js"></script>
+<script src="js/controller/SearchCompanyInfoController.js"></script>
+<script src="js/controller/DeleteCompanyInfoController.js"></script>
+<script src="js/controller/LogoutController.js"></script>
+<script src="js/boundary/ui.js"></script>
+<script src="js/boundary/LogoutPage.js"></script>
+<script src="js/boundary/Layout.js"></script>
+<script src="js/boundary/ViewCompanyInfoPage.js"></script>
+<script src="js/boundary/SearchCompanyInfoPage.js"></script>
+<script src="js/boundary/DeleteCompanyInfoPage.js"></script>
+<script>
+  Layout.start(session => {
+    const view = new ViewCompanyInfoPage(session);
+    if (view.displayPage()) {
+      new SearchCompanyInfoPage(session, view).displayPage();
+      new DeleteCompanyInfoPage(session).displayPage();
+    }
+  });
+</script>
+</body>
+</html>

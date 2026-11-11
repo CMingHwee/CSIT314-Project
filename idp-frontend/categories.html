@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IDP Categories · IDP Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-area="manager" data-nav="categories" data-tables="user_accounts,projects,categories">
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main">
+    <header class="page-header">
+      <div>
+        <div class="breadcrumb">Category Management</div>
+        <h1>IDP Categories</h1>
+      </div>
+      <a class="btn btn-primary" href="create-category.html">+ Create New Category</a>
+    </header>
+
+    <div id="page-banner"></div>
+
+    <div id="page-content">
+      <!-- Search IDP Category -->
+      <form class="card" id="search-form" novalidate role="search">
+        <div class="search-row">
+          <div class="field field-term" data-field="term">
+            <label for="term" class="visually-hidden">Search categories by name</label>
+            <input id="term" name="term" placeholder="Search categories by name" autocomplete="off">
+            <span class="field-error"></span>
+          </div>
+          <button class="btn btn-secondary btn-small" type="submit" style="margin-top:0">Search</button>
+        </div>
+      </form>
+
+      <!-- View IDP Categories -->
+      <section class="card" aria-live="polite">
+        <div class="card-head">
+          <p class="section-label" id="list-title"></p>
+          <button class="btn btn-secondary btn-small" type="button" id="clear-search" hidden>Clear search</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Category Name</th>
+                <th>Description</th>
+                <th>IDPs</th>
+                <th><span class="visually-hidden">Actions</span></th>
+              </tr>
+            </thead>
+            <tbody id="categories-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<!-- Delete IDP Category — confirmation -->
+<div class="modal-backdrop" id="delete-modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="delete-title">
+    <h2 id="delete-title">Delete category?</h2>
+    <p><strong>Are you sure? This action cannot be undone.</strong></p>
+    <p>No IDPs currently use this category.</p>
+    <div class="actions">
+      <button class="btn btn-secondary" type="button" id="delete-cancel">Cancel</button>
+      <button class="btn btn-danger" type="button" id="delete-confirm">Delete Category</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/data/CsvStore.js"></script>
+<script src="js/util/validation.js"></script>
+<script src="js/util/session.js"></script>
+<script src="js/entity/UserAccount.js"></script>
+<script src="js/entity/Project.js"></script>
+<script src="js/entity/Category.js"></script>
+<script src="js/controller/ViewCategoriesController.js"></script>
+<script src="js/controller/SearchCategoryController.js"></script>
+<script src="js/controller/DeleteCategoryController.js"></script>
+<script src="js/controller/LogoutController.js"></script>
+<script src="js/boundary/ui.js"></script>
+<script src="js/boundary/LogoutPage.js"></script>
+<script src="js/boundary/Layout.js"></script>
+<script src="js/boundary/ViewCategoriesPage.js"></script>
+<script src="js/boundary/SearchCategoryPage.js"></script>
+<script src="js/boundary/DeleteCategoryPage.js"></script>
+<script>
+  Layout.start(() => {
+    const view = new ViewCategoriesPage();
+    const search = new SearchCategoryPage(view);
+    view.displayPage();
+    search.displayPage();
+    // After a delete, redraw whatever is on screen (the full list or the current search).
+    new DeleteCategoryPage(() => search.isActive() ? search.run() : view.displayPage()).displayPage();
+  });
+</script>
+</body>
+</html>

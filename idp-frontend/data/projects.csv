@@ -1,0 +1,25 @@
+id,accountId,projectName,customerName,startDate,description,status,progress,categoryId,specifications,progressNote,completionDate,images
+1,2,Scandinavian kitchen refresh,Clara Davis,2026-10-12,"Light timber cabinetry, white quartz worktops and open shelving for a compact HDB kitchen. Layout reworked to fit a breakfast counter.",Current,40,1,"Oak-veneer carcasses, matt white handleless doors
+20 mm white quartz worktop with breakfast overhang
+Two open shelves above the sink run
+Under-cabinet LED strip lighting","design approved, carpentry next",,
+2,2,"Compact kitchen, 3-room flat",Farah Tan,2026-06-02,"Galley layout with full-height storage, a slim pull-out pantry and an induction hob.",Past,100,1,,,2026-08-12,
+3,6,Warm minimalist living room,Henry Ong,2026-09-01,"Neutral palette, oak flooring and a built-in media wall with hidden storage.",Current,65,2,"Engineered oak flooring throughout
+Built-in media wall with push-to-open storage
+Linen-white walls, warm 2700K lighting",carpentry in progress,,
+4,7,Japandi master bedroom,Irene Koh,2026-08-18,"Low platform bed, washi-paper lighting and a walk-in wardrobe in pale ash.",Current,80,3,"Low ash platform bed with storage drawers
+Washi-paper pendant and wall lights
+Walk-in wardrobe with sliding screens",wardrobe being fitted,,
+5,6,Home office nook,Jason Lee,2026-03-10,"A quiet work corner carved out of the living area, with acoustic panels and a fold-down desk.",Past,100,5,,,2026-05-28,
+6,7,Bright open-plan kitchen,Kavitha Rao,2026-10-20,"Wall removed to join kitchen and dining, with a long island and skylight.",Current,20,1,"Remove non-structural kitchen wall
+3 m island with seating for four
+Skylight above the dining table",demolition done,,
+7,2,Punggol BTO kitchen & dining,Mei Lin,2026-11-02,"Open kitchen and dining area for a new 4-room BTO flat, with a pantry wall and a built-in dining banquette.",Current,10,1,,measurements taken,,
+8,2,Bukit Timah condo living room,Ivan Ng,2026-09-20,Open-plan living room refit with built-in TV feature wall and storage bench.,Current,55,2,"Fluted-oak TV feature wall
+Storage bench under the bay window
+Concealed cable management",built-ins being installed,,
+9,2,Serangoon master bathroom,Ravi Menon,2026-10-05,"Master bathroom refit with a walk-in shower, wall-hung vanity and warm stone-look tiles.",Current,25,4,"Frameless walk-in shower screen
+Wall-hung oak vanity with stone top
+60 x 120 cm stone-look porcelain tiles",tiles ordered,,
+10,2,Café counter makeover,,,Service counter and display shelving rebuilt for a 30-seat neighbourhood café.,Past,100,,,,2026-05-03,
+11,2,Sengkang family room refresh,,,"Family room with a reading corner, built-in toy storage and soft-close cabinetry.",Past,100,2,,,2026-07-15,

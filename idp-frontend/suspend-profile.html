@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Suspend User Profile · IDP Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-area="admin" data-nav="user-profiles" data-tables="user_accounts,user_profiles,activity_log">
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main">
+    <header class="page-header">
+      <div>
+        <div class="breadcrumb"><a href="user-profiles.html">User Profiles</a> / <span id="crumb-user">…</span> / Suspend</div>
+        <h1>Suspend User Profile</h1>
+      </div>
+      <div class="user-chip" id="user-chip"></div>
+    </header>
+
+    <nav class="tabs tabs-top" aria-label="User Profiles">
+      <a href="user-profiles.html" aria-current="page">All Profiles</a>
+      <a href="create-profile.html">Create Profile</a>
+      <a href="search-profiles.html">Search Profiles</a>
+    </nav>
+
+    <div id="page-banner"></div>
+
+    <div id="page-content">
+      <!-- Suspend User Profile -->
+      <section class="card" id="profile-card" hidden>
+        <p class="section-label" id="profile-title"></p>
+        <dl class="details">
+          <div><dt>First Name</dt><dd id="p-first"></dd></div>
+          <div><dt>Last Name</dt><dd id="p-last"></dd></div>
+          <div class="full"><dt>Address</dt><dd id="p-address"></dd></div>
+          <div><dt>Company Name</dt><dd id="p-company"></dd></div>
+          <div><dt>Account status</dt><dd id="p-account"></dd></div>
+        </dl>
+        <div class="actions">
+          <a class="btn btn-secondary" id="back-link" href="user-profiles.html">Back</a>
+          <button class="btn btn-danger" type="button" id="suspend-btn">Suspend Profile</button>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<!-- Confirmation dialog -->
+<div class="modal-backdrop" id="confirm-modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+    <h2 id="confirm-title">Suspend this profile?</h2>
+    <p>The profile status changes to <strong>Suspended</strong> and it will no longer appear in public search results.</p>
+    <p>This only hides the profile. To block the user from logging in, suspend their account instead (User Accounts → Suspend Account).</p>
+    <div class="actions">
+      <button class="btn btn-secondary" type="button" id="confirm-cancel">Cancel</button>
+      <button class="btn btn-danger" type="button" id="confirm-yes">Suspend Profile</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/data/CsvStore.js"></script>
+<script src="js/util/validation.js"></script>
+<script src="js/util/session.js"></script>
+<script src="js/entity/UserAccount.js"></script>
+<script src="js/entity/UserProfile.js"></script>
+<script src="js/entity/ActivityLog.js"></script>
+<script src="js/controller/SuspendUserProfileController.js"></script>
+<script src="js/controller/UserAdminLogoutController.js"></script>
+<script src="js/boundary/ui.js"></script>
+<script src="js/boundary/UserAdminLogoutPage.js"></script>
+<script src="js/boundary/Layout.js"></script>
+<script src="js/boundary/SuspendUserProfilePage.js"></script>
+</body>
+</html>

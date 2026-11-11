@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Update User Account · IDP Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-area="admin" data-nav="user-accounts" data-tables="user_accounts,activity_log">
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main">
+    <header class="page-header">
+      <div>
+        <div class="breadcrumb">
+          User Management / <a href="user-accounts.html" id="crumb-list">User Accounts</a> / <span id="crumb-user">…</span>
+        </div>
+        <h1>Update User Account</h1>
+      </div>
+      <span class="pill" id="status-pill" hidden></span>
+    </header>
+
+    <div id="page-banner"></div>
+
+    <div id="page-content">
+      <!-- Update User Account -->
+      <form class="card" id="update-account-form" novalidate hidden>
+        <p class="section-label">Account details</p>
+        <div class="grid-2">
+          <div class="field" data-field="username">
+            <label for="username">Username *</label>
+            <input id="username" name="username" autocomplete="off">
+            <span class="field-error"></span>
+          </div>
+
+          <div class="field" data-field="email">
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" autocomplete="off">
+            <span class="field-error"></span>
+          </div>
+
+          <div class="field" data-field="phone">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" inputmode="numeric" placeholder="9xxx xxxx">
+            <span class="field-error"></span>
+          </div>
+
+          <div class="field" data-field="role">
+            <label for="role">Role *</label>
+            <select id="role" name="role"></select>
+            <span class="field-error"></span>
+            <span class="hint">Changing the role changes this user's permissions.</span>
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <p class="section-label">Reset password</p>
+        <div class="grid-2">
+          <div class="field" data-field="newPassword">
+            <label for="newPassword">New password</label>
+            <input id="newPassword" name="newPassword" type="password" autocomplete="new-password">
+            <span class="field-error"></span>
+            <span class="hint">At least 8 characters, including a number and a symbol.</span>
+          </div>
+
+          <div class="field" data-field="confirmPassword">
+            <label for="confirmPassword">Confirm new password</label>
+            <input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password">
+            <span class="field-error"></span>
+            <span class="hint">Leave both blank to keep the current password.</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn btn-secondary" id="cancel-link" href="user-accounts.html">Cancel</a>
+          <button class="btn btn-primary" type="submit">Save</button>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+<script src="js/data/CsvStore.js"></script>
+<script src="js/util/validation.js"></script>
+<script src="js/entity/UserAccount.js"></script>
+<script src="js/util/session.js"></script>
+<script src="js/entity/ActivityLog.js"></script>
+<script src="js/controller/UpdateUserAccountController.js"></script>
+<script src="js/controller/UserAdminLogoutController.js"></script>
+<script src="js/boundary/ui.js"></script>
+<script src="js/boundary/UserAdminLogoutPage.js"></script>
+<script src="js/boundary/Layout.js"></script>
+<script src="js/boundary/UpdateUserAccountPage.js"></script>
+</body>
+</html>

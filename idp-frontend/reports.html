@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reports · IDP Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-area="manager" data-nav="reports" data-tables="user_accounts,companies,projects,shortlists,project_views,activity_log">
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main">
+    <header class="page-header">
+      <div>
+        <div class="breadcrumb">Reports / <span id="crumb-tab">Daily</span></div>
+        <h1 id="report-h1">Daily Report</h1>
+      </div>
+      <div class="user-chip" id="user-chip"></div>
+    </header>
+
+    <div class="tabs tabs-top" role="tablist">
+      <button type="button" role="tab" id="tab-daily" aria-controls="panel-daily" aria-selected="true">Daily</button>
+      <button type="button" role="tab" id="tab-weekly" aria-controls="panel-weekly" aria-selected="false">Weekly</button>
+      <button type="button" role="tab" id="tab-monthly" aria-controls="panel-monthly" aria-selected="false">Monthly</button>
+    </div>
+
+    <div id="page-banner"></div>
+
+    <div id="page-content">
+      <!-- Daily Report -->
+      <section class="report-panel" id="panel-daily" role="tabpanel" aria-labelledby="tab-daily">
+        <div class="report-controls">
+          <div class="field" data-field="day">
+            <label for="day">Day</label>
+            <input type="date" id="day">
+            <span class="field-error"></span>
+          </div>
+          <button class="btn btn-primary" type="button" data-generate>Generate Daily Report</button>
+          <span class="spacer"></span>
+          <button class="btn btn-secondary btn-small" type="button" data-pdf disabled>Download PDF</button>
+          <button class="btn btn-secondary btn-small" type="button" data-csv disabled>Download CSV</button>
+        </div>
+        <div class="card" data-output></div>
+      </section>
+
+      <!-- Weekly Report -->
+      <section class="report-panel" id="panel-weekly" role="tabpanel" aria-labelledby="tab-weekly" hidden>
+        <div class="report-controls">
+          <div class="field" data-field="week">
+            <label for="week">Week ending</label>
+            <input type="date" id="week">
+            <span class="field-error"></span>
+          </div>
+          <button class="btn btn-primary" type="button" data-generate>Generate Weekly Report</button>
+          <span class="spacer"></span>
+          <button class="btn btn-secondary btn-small" type="button" data-pdf disabled>Download PDF</button>
+          <button class="btn btn-secondary btn-small" type="button" data-csv disabled>Download CSV</button>
+        </div>
+        <div class="card" data-output></div>
+      </section>
+
+      <!-- Monthly Report -->
+      <section class="report-panel" id="panel-monthly" role="tabpanel" aria-labelledby="tab-monthly" hidden>
+        <div class="report-controls">
+          <div class="field" data-field="month">
+            <label for="month">Month</label>
+            <input type="month" id="month" placeholder="YYYY-MM">
+            <span class="field-error"></span>
+          </div>
+          <button class="btn btn-primary" type="button" data-generate>Generate Monthly Report</button>
+          <span class="spacer"></span>
+          <button class="btn btn-secondary btn-small" type="button" data-pdf disabled>Download PDF</button>
+          <button class="btn btn-secondary btn-small" type="button" data-csv disabled>Download CSV</button>
+        </div>
+        <div class="card" data-output></div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<script src="js/data/CsvStore.js"></script>
+<script src="js/util/validation.js"></script>
+<script src="js/util/session.js"></script>
+<script src="js/util/dates.js"></script>
+<script src="js/entity/UserAccount.js"></script>
+<script src="js/entity/CompanyInfo.js"></script>
+<script src="js/entity/Project.js"></script>
+<script src="js/entity/Shortlist.js"></script>
+<script src="js/entity/ProjectView.js"></script>
+<script src="js/entity/ActivityLog.js"></script>
+<script src="js/controller/GenerateDailyReportController.js"></script>
+<script src="js/controller/GenerateWeeklyReportController.js"></script>
+<script src="js/controller/GenerateMonthlyReportController.js"></script>
+<script src="js/controller/LogoutController.js"></script>
+<script src="js/boundary/ui.js"></script>
+<script src="js/boundary/LogoutPage.js"></script>
+<script src="js/boundary/Layout.js"></script>
+<script src="js/boundary/ReportPanel.js"></script>
+<script src="js/boundary/DailyReportPage.js"></script>
+<script src="js/boundary/WeeklyReportPage.js"></script>
+<script src="js/boundary/MonthlyReportPage.js"></script>
+<script>
+  Layout.start(() => {
+    const pages = {
+      daily: new DailyReportPage(),
+      weekly: new WeeklyReportPage(),
+      monthly: new MonthlyReportPage()
+    };
+    Object.values(pages).forEach(p => p.displayPage());
+
+    const show = key => {
+      for (const k of Object.keys(pages)) {
+        UI.el(`tab-${k}`).setAttribute('aria-selected', String(k === key));
+        UI.el(`panel-${k}`).hidden = k !== key;
+      }
+      const name = key[0].toUpperCase() + key.slice(1);
+      UI.el('crumb-tab').textContent = name;
+      UI.el('report-h1').textContent = `${name} Report`;
+      history.replaceState(null, '', `?tab=${key}`);
+    };
+    for (const k of Object.keys(pages)) UI.el(`tab-${k}`).addEventListener('click', () => show(k));
+    show(pages[UI.param('tab')] ? UI.param('tab') : 'daily');
+  });
+</script>
+</body>
+</html>

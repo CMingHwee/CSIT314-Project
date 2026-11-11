@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Accounts · IDP Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-area="admin" data-nav="user-accounts" data-tables="user_accounts">
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main">
+    <header class="page-header">
+      <div>
+        <div class="breadcrumb">User Management / User Accounts</div>
+        <h1>User Accounts</h1>
+      </div>
+      <a class="btn btn-primary" href="create-account.html">+ Create Account</a>
+    </header>
+
+    <div id="page-banner"></div>
+
+    <div id="page-content">
+      <!-- View User Account — list -->
+      <section class="card" aria-label="All user accounts">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th><span class="visually-hidden">Action</span></th>
+              </tr>
+            </thead>
+            <tbody id="accounts-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- View User Account — selected account details -->
+      <section class="card narrow" id="selected-account" hidden aria-live="polite">
+        <p class="section-label">Selected account</p>
+        <dl class="details">
+          <div><dt>Username</dt><dd id="d-username"></dd></div>
+          <div><dt>Email</dt><dd id="d-email"></dd></div>
+          <div><dt>Phone</dt><dd id="d-phone"></dd></div>
+          <div><dt>Role</dt><dd id="d-role"></dd></div>
+          <div><dt>Status</dt><dd id="d-status"></dd></div>
+        </dl>
+        <div class="actions">
+          <a class="btn btn-secondary" id="profile-link" href="#">View Profile</a>
+          <a class="btn btn-secondary" id="suspend-link" href="#">Suspend Account</a>
+          <a class="btn btn-primary" id="update-link" href="#">Update Account</a>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<script src="js/data/CsvStore.js"></script>
+<script src="js/util/validation.js"></script>
+<script src="js/util/session.js"></script>
+<script src="js/entity/UserAccount.js"></script>
+<script src="js/controller/ViewUserAccountController.js"></script>
+<script src="js/controller/UserAdminLogoutController.js"></script>
+<script src="js/boundary/ui.js"></script>
+<script src="js/boundary/UserAdminLogoutPage.js"></script>
+<script src="js/boundary/Layout.js"></script>
+<script src="js/boundary/ViewUserAccountPage.js"></script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IDP Platform · Interior design projects in Singapore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-area="home" data-tables="user_accounts,user_profiles,companies,projects,shortlists,project_views,categories">
+<div class="app">
+  <!-- Left bar -->
+  <aside class="sidebar home-sidebar">
+    <a class="brand" href="index.html">
+      <div class="logo" aria-hidden="true">LOGO</div>
+      <div class="brand-name">IDP Platform</div>
+    </a>
+
+    <nav class="nav nav-main" aria-label="Homepage">
+      <a href="#top" class="active" aria-current="page">Home</a>
+      <a href="#completed">Completed projects</a>
+      <a href="#designers">Top designers</a>
+      <a href="#how">How it works</a>
+      <a href="#for-designers">For interior designers</a>
+
+      <p class="nav-heading">Browse by category</p>
+      <div id="category-links"></div>
+    </nav>
+
+    <nav class="nav" aria-label="Other logins">
+      <a href="login.html?role=Interior%20Designer">Designer log in</a>
+      <a href="admin-login.html">Admin Portal</a>
+      <a href="demo-data.html">Demo data</a>
+    </nav>
+  </aside>
+
+  <main class="main home-main" id="top">
+    <!-- Top bar with the Login button -->
+    <header class="home-top">
+      <span class="home-top-note">Interior design projects from Singapore studios</span>
+      <div class="home-top-actions" id="top-actions">
+        <a class="btn btn-primary btn-small" href="login.html" id="login-btn">Log in</a>
+      </div>
+    </header>
+
+    <div id="page-banner"></div>
+
+    <div id="page-content">
+      <!-- Hero -->
+      <section class="home-hero">
+        <p class="eyebrow">IDP Platform</p>
+        <h1>From first sketch to finished room.</h1>
+        <p class="lead">
+          See what Singapore's interior designers have actually built, shortlist the ideas you love,
+          and follow your own project as it comes together — all in one place.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="login.html?role=Customer">Start browsing</a>
+          <a class="btn btn-secondary" href="#completed">See completed work</a>
+        </div>
+      </section>
+
+      <!-- At a glance -->
+      <section class="stats" id="stats" aria-label="Platform at a glance"></section>
+
+      <!-- Completed IDPs -->
+      <section class="card home-section" id="completed">
+        <div class="card-head">
+          <div>
+            <p class="section-label" id="completed-title">Recently completed projects</p>
+            <p class="hint" style="margin:2px 0 0">Finished work from designers on the platform. Log in to see every project, current ones included.</p>
+          </div>
+          <button class="btn btn-secondary btn-small" type="button" id="clear-category" hidden>Show all</button>
+        </div>
+        <div class="card-grid" id="completed-grid"></div>
+        <p class="empty-state" id="completed-empty" hidden></p>
+      </section>
+
+      <!-- The best Interior Designers -->
+      <section class="card home-section" id="designers">
+        <p class="section-label">Top interior designers</p>
+        <p class="hint" style="margin:-8px 0 14px">Ranked by how often customers shortlisted their projects, then by how often their projects were viewed.</p>
+        <ol class="rank-list" id="designer-list"></ol>
+      </section>
+
+      <!-- How it works -->
+      <section class="home-section" id="how">
+        <p class="section-label">How it works</p>
+        <div class="steps">
+          <div class="step">
+            <span class="step-no">1</span>
+            <strong>Browse real projects</strong>
+            <p>Search kitchens, bedrooms, bathrooms and more — by style, room or designer.</p>
+          </div>
+          <div class="step">
+            <span class="step-no">2</span>
+            <strong>Shortlist what you love</strong>
+            <p>Save projects to your shortlist and come back to compare them whenever you like.</p>
+          </div>
+          <div class="step">
+            <span class="step-no">3</span>
+            <strong>Follow your renovation</strong>
+            <p>Once you work with a designer, track progress from design approval to handover.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- For designers -->
+      <section class="card home-section home-cta" id="for-designers">
+        <div>
+          <p class="section-label">For interior designers</p>
+          <h2>Show your best work to people planning their next home.</h2>
+          <p>Build a portfolio of completed projects, keep current ones up to date, and see how many
+             customers view and shortlist each one.</p>
+        </div>
+        <a class="btn btn-primary" href="login.html?role=Interior%20Designer">Designer log in</a>
+      </section>
+
+      <footer class="home-foot">
+        IDP Platform · CSIT314 group project prototype · all names, projects and figures are demo data
+      </footer>
+    </div>
+  </main>
+</div>
+
+<script src="js/data/CsvStore.js"></script>
+<script src="js/util/validation.js"></script>
+<script src="js/util/session.js"></script>
+<script src="js/entity/UserAccount.js"></script>
+<script src="js/entity/UserProfile.js"></script>
+<script src="js/entity/CompanyInfo.js"></script>
+<script src="js/entity/Project.js"></script>
+<script src="js/entity/Shortlist.js"></script>
+<script src="js/entity/ProjectView.js"></script>
+<script src="js/entity/Category.js"></script>
+<script src="js/controller/ViewHomePageController.js"></script>
+<script src="js/boundary/ui.js"></script>
+<script src="js/boundary/Layout.js"></script>
+<script src="js/boundary/HomePage.js"></script>
+</body>
+</html>

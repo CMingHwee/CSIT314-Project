@@ -1,0 +1,7 @@
+id,accountId,firstName,lastName,address,companyName,companyRegNo,status,photo
+1,1,Amy,Lee,"22 Sample Street, #02-01, Queenstown, Singapore 000001",,,Active,
+2,2,Ben,Chen,"21 Example Street 3, #08-12, Tampines, Singapore 000000",Studio Example Pte Ltd,2026XXXXXXK,Active,
+3,3,Clara,Davis,"8 Demo Avenue, #11-04, Bukit Timah, Singapore 000002",,,Active,
+4,8,Fiona,Tan,"8 Example Drive, #03-44, Woodlands, Singapore 000000",,,Active,
+5,7,Nina,James,"88 Harbour Walk, #12-03, Jurong East, Singapore 000022",Northlight Interiors,201845678B,Active,
+6,10,Jun,Ong,"5 Sample Lane, #04-09, Tampines, Singapore 000005",Oakline Design,201912345A,Suspended,

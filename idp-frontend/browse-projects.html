@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Browse Projects · IDP Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-area="customer" data-nav="browse" data-tables="user_accounts,companies,projects,user_profiles">
+<header class="topnav" id="topnav"></header>
+
+<main class="customer-main">
+  <div id="page-banner"></div>
+
+  <div id="page-content">
+    <!-- Search IDP -->
+    <section class="card">
+      <div class="breadcrumb">Browse Projects</div>
+      <h1 style="margin-bottom:14px">Find a project like the one you have in mind</h1>
+      <form id="search-form" novalidate role="search">
+        <div class="search-row">
+          <div class="field field-term" data-field="term">
+            <label for="term" class="visually-hidden">Search projects</label>
+            <input id="term" name="term" placeholder="Kitchen, Japandi, a designer's name…" autocomplete="off">
+            <span class="field-error"></span>
+          </div>
+          <button class="btn btn-primary btn-small" type="submit" style="margin-top:0">Search</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Customer Dashboard: featured projects, replaced by search results -->
+    <section class="card" aria-live="polite">
+      <div class="card-head">
+        <p class="section-label" id="results-title">Featured projects</p>
+        <button class="btn btn-secondary btn-small" type="button" id="clear-search" hidden>Clear search</button>
+      </div>
+      <div class="card-grid" id="results-grid"></div>
+      <p class="empty-state" id="results-empty" hidden></p>
+    </section>
+  </div>
+</main>
+
+<script src="js/data/CsvStore.js"></script>
+<script src="js/util/validation.js"></script>
+<script src="js/util/session.js"></script>
+<script src="js/entity/UserAccount.js"></script>
+<script src="js/entity/CompanyInfo.js"></script>
+<script src="js/entity/Project.js"></script>
+<script src="js/entity/UserProfile.js"></script>
+<script src="js/controller/SearchIDPController.js"></script>
+<script src="js/controller/LogoutController.js"></script>
+<script src="js/boundary/ui.js"></script>
+<script src="js/boundary/LogoutPage.js"></script>
+<script src="js/boundary/Layout.js"></script>
+<script src="js/boundary/SearchIDPPage.js"></script>
+</body>
+</html>

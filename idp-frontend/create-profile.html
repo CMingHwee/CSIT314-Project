@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create User Profile · IDP Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-area="admin" data-nav="user-profiles" data-tables="user_accounts,user_profiles,activity_log">
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main">
+    <header class="page-header">
+      <div>
+        <div class="breadcrumb"><a href="user-profiles.html">User Profiles</a> / Create New Profile</div>
+        <h1>Create User Profile</h1>
+      </div>
+      <div class="user-chip" id="user-chip"></div>
+    </header>
+
+    <nav class="tabs tabs-top" aria-label="User Profiles">
+      <a href="user-profiles.html">All Profiles</a>
+      <a href="create-profile.html" aria-current="page">Create Profile</a>
+      <a href="search-profiles.html">Search Profiles</a>
+    </nav>
+
+    <div id="page-banner"></div>
+
+    <div id="page-content">
+      <!-- Create User Profile -->
+      <form class="card" id="create-profile-form" novalidate>
+        <p class="section-label">Link to account</p>
+        <div class="grid-2">
+          <div class="field span-2 w-wide" data-field="accountId">
+            <label for="accountId">User account *</label>
+            <select id="accountId" name="accountId"></select>
+            <span class="field-error"></span>
+            <span class="hint">Only accounts without a profile are listed.</span>
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <p class="section-label">Personal details</p>
+        <div class="grid-2">
+          <div class="field" data-field="firstName">
+            <label for="firstName">First Name *</label>
+            <input id="firstName" name="firstName" autocomplete="off">
+            <span class="field-error"></span>
+          </div>
+
+          <div class="field" data-field="lastName">
+            <label for="lastName">Last Name *</label>
+            <input id="lastName" name="lastName" autocomplete="off">
+            <span class="field-error"></span>
+          </div>
+
+          <div class="field span-2 w-wide" data-field="address">
+            <label for="address">Address *</label>
+            <input id="address" name="address" placeholder="Street, unit, postal code" autocomplete="off">
+            <span class="field-error"></span>
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <p class="section-label">Professional details</p>
+        <div class="grid-2">
+          <div class="field" data-field="companyName">
+            <label for="companyName">Company Name</label>
+            <input id="companyName" name="companyName" placeholder="Optional" autocomplete="off">
+            <span class="field-error"></span>
+          </div>
+
+          <div class="field" data-field="companyRegNo">
+            <label for="companyRegNo">Company Registration No.</label>
+            <input id="companyRegNo" name="companyRegNo" placeholder="Optional" autocomplete="off">
+            <span class="field-error"></span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn btn-secondary" href="user-profiles.html">Cancel</a>
+          <button class="btn btn-primary" type="submit" id="save-btn">Save Profile</button>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+<script src="js/data/CsvStore.js"></script>
+<script src="js/util/validation.js"></script>
+<script src="js/entity/UserAccount.js"></script>
+<script src="js/entity/UserProfile.js"></script>
+<script src="js/util/session.js"></script>
+<script src="js/entity/ActivityLog.js"></script>
+<script src="js/controller/CreateUserProfileController.js"></script>
+<script src="js/controller/UserAdminLogoutController.js"></script>
+<script src="js/boundary/ui.js"></script>
+<script src="js/boundary/UserAdminLogoutPage.js"></script>
+<script src="js/boundary/Layout.js"></script>
+<script src="js/boundary/CreateUserProfilePage.js"></script>
+</body>
+</html>

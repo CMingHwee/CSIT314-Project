@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Platform Management Dashboard · IDP Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-area="manager" data-nav="dashboard" data-tables="user_accounts">
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main">
+    <header class="page-header">
+      <div>
+        <div class="breadcrumb">Dashboard</div>
+        <h1>Platform Management Dashboard</h1>
+      </div>
+      <div class="user-chip" id="user-chip"></div>
+    </header>
+
+    <div id="page-banner"></div>
+
+    <div id="page-content">
+      <section class="card">
+        <p class="section-label">Quick links</p>
+        <div class="tiles">
+          <a class="tile" href="categories.html">
+            <strong>Category Management</strong>
+            <span>Create, view, update, delete and search IDP categories.</span>
+          </a>
+          <a class="tile" href="reports.html">
+            <strong>Reports</strong>
+            <span>Generate daily, weekly and monthly platform reports.</span>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<script src="js/data/CsvStore.js"></script>
+<script src="js/util/validation.js"></script>
+<script src="js/util/session.js"></script>
+<script src="js/entity/UserAccount.js"></script>
+<script src="js/controller/LogoutController.js"></script>
+<script src="js/boundary/ui.js"></script>
+<script src="js/boundary/LogoutPage.js"></script>
+<script src="js/boundary/Layout.js"></script>
+<script>Layout.start(() => {});</script>
+</body>
+</html>

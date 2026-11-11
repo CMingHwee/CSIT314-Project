@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Past IDP · IDP Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-area="designer" data-nav="my-projects" data-tables="user_accounts,companies,projects,categories,activity_log">
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main">
+    <header class="page-header">
+      <div>
+        <div class="breadcrumb">My Projects / <a href="past-idps.html" id="crumb-list">Past IDPs</a> / <span id="crumb-name">…</span></div>
+        <h1 id="idp-title">Past IDP</h1>
+      </div>
+      <div class="header-actions" id="header-actions" hidden>
+        <button class="btn btn-danger-outline btn-small" type="button" id="delete-btn">Delete IDP</button>
+        <a class="btn btn-primary btn-small" id="update-link" href="#">Update IDP</a>
+      </div>
+    </header>
+
+    <nav class="tabs tabs-top" aria-label="My Projects">
+      <a href="my-projects.html">Current IDPs</a>
+      <a href="past-idps.html" aria-current="page">Past IDPs (portfolio)</a>
+    </nav>
+
+    <div id="page-banner"></div>
+
+    <div id="page-content">
+      <!-- View Past IDP -->
+      <section class="card" id="idp-card" hidden>
+        <div class="detail-meta">
+          <dl><dt>Completion Date</dt><dd id="d-completed"></dd></dl>
+          <dl><dt>Status</dt><dd id="d-status"></dd></dl>
+          <dl id="d-category-wrap" hidden><dt>Category</dt><dd id="d-category"></dd></dl>
+        </div>
+        <div class="gallery-strip" id="d-gallery" hidden></div>
+        <dl class="detail-block"><dt>Description</dt><dd id="d-description"></dd></dl>
+        <p class="tip-box">Tip: use this as a reference when improving one of your <a href="my-projects.html">current IDPs</a>.</p>
+      </section>
+    </div>
+  </main>
+</div>
+
+<!-- Delete Past IDP — confirmation -->
+<div class="modal-backdrop" id="delete-modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="delete-title">
+    <h2 id="delete-title">Remove this project from your portfolio?</h2>
+    <p>For example, if the site later suffered damage you weren't responsible for and you no longer want it linked to your name.</p>
+    <p><strong>The past IDP will be deleted and can't be recovered.</strong></p>
+    <div class="actions">
+      <button class="btn btn-secondary" type="button" id="delete-cancel">Cancel</button>
+      <button class="btn btn-danger" type="button" id="delete-confirm">Delete IDP</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/data/CsvStore.js"></script>
+<script src="js/util/validation.js"></script>
+<script src="js/util/session.js"></script>
+<script src="js/entity/UserAccount.js"></script>
+<script src="js/entity/CompanyInfo.js"></script>
+<script src="js/entity/Project.js"></script>
+<script src="js/entity/Category.js"></script>
+<script src="js/entity/ActivityLog.js"></script>
+<script src="js/controller/ViewPastIDPController.js"></script>
+<script src="js/controller/DeletePastIDPController.js"></script>
+<script src="js/controller/LogoutController.js"></script>
+<script src="js/boundary/ui.js"></script>
+<script src="js/boundary/LogoutPage.js"></script>
+<script src="js/boundary/ConfirmDialog.js"></script>
+<script src="js/boundary/Layout.js"></script>
+<script src="js/boundary/ViewPastIDPPage.js"></script>
+<script src="js/boundary/DeletePastIDPPage.js"></script>
+<script>
+  Layout.start(session => {
+    if (new ViewPastIDPPage(session).displayPage()) new DeletePastIDPPage(session).displayPage();
+  });
+</script>
+</body>
+</html>

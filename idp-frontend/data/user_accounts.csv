@@ -1,0 +1,11 @@
+id,username,email,phone,password,role,status
+1,alee,alee@example.com,9100 0101,Admin#2026,User Admin,Active
+2,bchen,bchen@example.com,9100 0102,Design#2026,Interior Designer,Active
+3,cdavis,cdavis@example.com,9100 0103,Shop#2026x,Customer,Active
+4,dkumar,dkumar@example.com,9100 0104,Design#2027,Interior Designer,Active
+5,erahman,erahman@example.com,9100 0105,Manage#2026,Platform Management,Inactive
+6,otan,otan@example.com,9100 0106,Design#2028,Interior Designer,Active
+7,njames,njames@example.com,9100 0107,Design#2029,Interior Designer,Active
+8,ftan,ftan@example.com,9100 0108,Shop#2027x,Customer,Active
+9,gwong,gwong@example.com,9100 0109,Manage#2027,Platform Management,Active
+10,jong,jong@example.com,9100 0110,Design#2030,Interior Designer,Active

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log in · IDP Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-area="public" data-tables="user_accounts">
+  <header class="public-top">
+    <a class="home-brand" href="index.html"><span class="logo" aria-hidden="true">LOGO</span> IDP Platform</a>
+  </header>
+
+  <main class="public-main">
+    <!-- Login (one login page for designers, customers and Platform Management) -->
+    <section class="card login-card">
+      <h1>Log in</h1>
+      <p class="subtitle">Choose your role, then sign in.</p>
+
+      <div id="page-banner"></div>
+
+      <div id="page-content">
+        <form id="login-form" novalidate>
+          <div class="field" data-field="role">
+            <label for="role">Role</label>
+            <select id="role" name="role"></select>
+            <span class="field-error"></span>
+          </div>
+
+          <div class="field" data-field="email">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="username">
+            <span class="field-error"></span>
+          </div>
+
+          <div class="field" data-field="password">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" autocomplete="current-password">
+            <span class="field-error"></span>
+          </div>
+
+          <button class="btn btn-primary" type="submit">Login</button>
+        </form>
+      </div>
+
+      <p class="public-foot"><a href="index.html">Home</a> · <a href="admin-login.html">User Admin? Go to the Admin Portal</a> · <a href="demo-data.html">Manage demo CSV data</a></p>
+    </section>
+  </main>
+
+<script src="js/data/CsvStore.js"></script>
+<script src="js/util/validation.js"></script>
+<script src="js/util/session.js"></script>
+<script src="js/entity/UserAccount.js"></script>
+<script src="js/controller/LoginController.js"></script>
+<script src="js/boundary/ui.js"></script>
+<script src="js/boundary/Layout.js"></script>
+<script src="js/boundary/LoginPage.js"></script>
+</body>
+</html>

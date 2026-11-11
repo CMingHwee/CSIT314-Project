@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Update Company Information · IDP Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-area="designer" data-nav="company-profile" data-tables="user_accounts,companies,activity_log">
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main">
+    <header class="page-header">
+      <div>
+        <div class="breadcrumb"><a href="company-profile.html">Company Profile</a> / Edit</div>
+        <h1>Update Company Information</h1>
+      </div>
+      <span class="pill" id="editing-pill" hidden>Editing — fields enabled</span>
+    </header>
+
+    <div id="page-banner"></div>
+
+    <div id="page-content">
+      <!-- Alternate flow: nothing to edit -->
+      <section class="card empty-state" id="no-company" hidden>
+        <p id="no-company-text"></p>
+        <a class="btn btn-primary" href="create-company.html">Create Company Info</a>
+      </section>
+
+      <!-- Update Company Information -->
+      <form class="card" id="company-form" novalidate hidden>
+        <p class="section-label">Company details</p>
+        <div class="grid-2">
+          <div class="field" data-field="companyName">
+            <label for="companyName">Company Name *</label>
+            <input id="companyName" name="companyName" autocomplete="organization">
+            <span class="field-error"></span>
+          </div>
+
+          <div class="field" data-field="registrationNumber">
+            <label for="registrationNumber">Registration Number *</label>
+            <input id="registrationNumber" name="registrationNumber" autocomplete="off">
+            <span class="field-error"></span>
+          </div>
+
+          <div class="field span-2 w-wide" data-field="address">
+            <label for="address">Address *</label>
+            <input id="address" name="address" placeholder="Street, unit, postal code" autocomplete="street-address">
+            <span class="field-error"></span>
+          </div>
+
+          <div class="field span-2 w-wide" data-field="contactEmail">
+            <label for="contactEmail">Contact Email *</label>
+            <input id="contactEmail" name="contactEmail" type="email" autocomplete="email">
+            <span class="field-error"></span>
+          </div>
+
+          <div class="field span-2 w-wide" data-field="description">
+            <label for="description">Description *</label>
+            <textarea id="description" name="description"></textarea>
+            <span class="field-error"></span>
+            <span class="hint">Customers see this on your public profile.</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn btn-secondary" href="company-profile.html">Cancel</a>
+          <button class="btn btn-primary" type="submit">Save</button>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+<script src="js/data/CsvStore.js"></script>
+<script src="js/util/validation.js"></script>
+<script src="js/util/session.js"></script>
+<script src="js/entity/UserAccount.js"></script>
+<script src="js/entity/CompanyInfo.js"></script>
+<script src="js/entity/ActivityLog.js"></script>
+<script src="js/controller/UpdateCompanyInfoController.js"></script>
+<script src="js/controller/LogoutController.js"></script>
+<script src="js/boundary/ui.js"></script>
+<script src="js/boundary/LogoutPage.js"></script>
+<script src="js/boundary/Layout.js"></script>
+<script src="js/boundary/UpdateCompanyInfoPage.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project · IDP Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-area="customer" data-nav="browse" data-tables="user_accounts,companies,projects,shortlists,project_views,categories,user_profiles">
+<header class="topnav" id="topnav"></header>
+
+<main class="customer-main">
+  <a class="back-link" id="back-link" href="browse-projects.html">← Back to projects</a>
+
+  <div id="project-header" class="page-header" hidden>
+    <h1 id="project-name"></h1>
+    <!-- Save IDP to Shortlist -->
+    <button class="btn btn-primary" type="button" id="save-btn">Save to Shortlist</button>
+  </div>
+
+  <div id="page-banner"></div>
+
+  <div id="page-content">
+    <!-- View IDP (read-only) -->
+    <section class="card" id="project-card" hidden>
+      <div class="gallery" aria-label="Project images">
+        <div id="gallery-hero"></div>
+        <div class="thumbs" id="gallery-thumbs"></div>
+      </div>
+
+      <div class="meta-row">
+        <dl><dt>Designer</dt><dd class="designer-line"><span id="p-designer-photo"></span><span id="p-designer"></span></dd></dl>
+        <dl><dt>Status</dt><dd id="p-status"></dd></dl>
+        <dl><dt id="p-start-label">Started</dt><dd id="p-start"></dd></dl>
+        <dl id="p-category-wrap" hidden><dt>Category</dt><dd id="p-category"></dd></dl>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Progress</span><span id="p-progress-text"></span></div>
+        <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="p-progress"><span></span></div>
+      </div>
+
+      <p class="project-desc" id="p-description"></p>
+      <div id="p-specs-wrap" hidden style="margin-top:14px">
+        <p class="section-label" style="margin-bottom:4px">Specifications</p>
+        <ul class="spec-list" id="p-specs"></ul>
+      </div>
+    </section>
+  </div>
+</main>
+
+<script src="js/data/CsvStore.js"></script>
+<script src="js/util/validation.js"></script>
+<script src="js/util/session.js"></script>
+<script src="js/entity/UserAccount.js"></script>
+<script src="js/entity/CompanyInfo.js"></script>
+<script src="js/entity/Project.js"></script>
+<script src="js/entity/UserProfile.js"></script>
+<script src="js/entity/Shortlist.js"></script>
+<script src="js/entity/Category.js"></script>
+<script src="js/entity/ProjectView.js"></script>
+<script src="js/controller/ViewIDPController.js"></script>
+<script src="js/controller/SaveIDPController.js"></script>
+<script src="js/controller/LogoutController.js"></script>
+<script src="js/boundary/ui.js"></script>
+<script src="js/boundary/LogoutPage.js"></script>
+<script src="js/boundary/Layout.js"></script>
+<script src="js/boundary/ViewIDPPage.js"></script>
+<script src="js/boundary/SaveIDPPage.js"></script>
+<script>
+  Layout.start(session => {
+    const view = new ViewIDPPage(session);
+    const shown = view.displayPage();
+    if (shown) new SaveIDPPage(session, shown).displayPage();
+  });
+</script>
+</body>
+</html>

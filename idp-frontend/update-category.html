@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Update IDP Category · IDP Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-area="manager" data-nav="categories" data-tables="user_accounts,projects,categories">
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main">
+    <header class="page-header">
+      <div>
+        <div class="breadcrumb"><a href="categories.html">Category Management</a> / <span id="crumb-name">…</span> / Edit</div>
+        <h1>Update IDP Category</h1>
+      </div>
+      <div class="user-chip" id="user-chip"></div>
+    </header>
+
+    <div id="page-banner"></div>
+
+    <div id="page-content">
+      <!-- Update IDP Category -->
+      <form class="card" id="category-form" novalidate hidden>
+        <p class="section-label">Category details</p>
+        <div class="current-strip" id="current-strip"></div>
+        <div class="grid-2">
+          <div class="field span-2 w-wide" data-field="name">
+            <label for="name">Category Name *</label>
+            <input id="name" name="name" autocomplete="off">
+            <span class="field-error"></span>
+            <span class="hint">Must not match another existing category.</span>
+          </div>
+          <div class="field span-2" data-field="description">
+            <label for="description">Description *</label>
+            <textarea id="description" name="description"></textarea>
+            <span class="field-error"></span>
+          </div>
+        </div>
+        <div class="actions">
+          <a class="btn btn-secondary" href="categories.html">Cancel</a>
+          <button class="btn btn-primary" type="submit">Save</button>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+<script src="js/data/CsvStore.js"></script>
+<script src="js/util/validation.js"></script>
+<script src="js/util/session.js"></script>
+<script src="js/entity/UserAccount.js"></script>
+<script src="js/entity/Project.js"></script>
+<script src="js/entity/Category.js"></script>
+<script src="js/controller/UpdateCategoryController.js"></script>
+<script src="js/controller/LogoutController.js"></script>
+<script src="js/boundary/ui.js"></script>
+<script src="js/boundary/LogoutPage.js"></script>
+<script src="js/boundary/Layout.js"></script>
+<script src="js/boundary/UpdateCategoryPage.js"></script>
+</body>
+</html>

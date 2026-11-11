@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio Analytics · IDP Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-area="designer" data-nav="company-profile" data-tables="user_accounts,companies,projects,shortlists,project_views">
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main">
+    <header class="page-header">
+      <div>
+        <div class="breadcrumb"><a href="company-profile.html">Company Profile</a> / Portfolio Analytics</div>
+        <h1>Portfolio Analytics</h1>
+      </div>
+      <div class="user-chip" id="user-chip"></div>
+    </header>
+
+    <nav class="tabs tabs-top" aria-label="Company Profile sections">
+      <a href="company-profile.html">Company Info</a>
+      <a href="analytics.html" aria-current="page">Portfolio Analytics</a>
+    </nav>
+
+    <div id="page-banner"></div>
+
+    <div id="page-content">
+      <section class="card empty-state" id="no-projects" hidden>
+        <p id="no-projects-text"></p>
+        <a class="btn btn-primary" href="create-project.html">Create New Current Project</a>
+      </section>
+
+      <div id="analytics" hidden>
+        <!-- Portfolio Analytics: views and shortlists -->
+        <div class="stats" id="stats"></div>
+
+        <section class="card">
+          <div class="card-head">
+            <p class="section-label">Per project</p>
+            <div class="field" style="flex-direction:row;align-items:center;gap:8px">
+              <label for="sort">Sort by</label>
+              <select id="sort" style="width:auto">
+                <option value="views">Views</option>
+                <option value="shortlisted">Shortlisted</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Project</th><th>Status</th><th>Views (all time)</th><th>Shortlisted</th></tr>
+              </thead>
+              <tbody id="analytics-body"></tbody>
+            </table>
+          </div>
+          <p class="hint" style="margin-top:12px">Views count each time a customer opens the project page. Shortlisted counts every customer who saved it.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="js/data/CsvStore.js"></script>
+<script src="js/util/validation.js"></script>
+<script src="js/util/session.js"></script>
+<script src="js/util/dates.js"></script>
+<script src="js/entity/UserAccount.js"></script>
+<script src="js/entity/CompanyInfo.js"></script>
+<script src="js/entity/Project.js"></script>
+<script src="js/entity/Shortlist.js"></script>
+<script src="js/entity/ProjectView.js"></script>
+<script src="js/controller/ViewPortfolioAnalyticsController.js"></script>
+<script src="js/controller/LogoutController.js"></script>
+<script src="js/boundary/ui.js"></script>
+<script src="js/boundary/LogoutPage.js"></script>
+<script src="js/boundary/Layout.js"></script>
+<script src="js/boundary/PortfolioAnalyticsPage.js"></script>
+</body>
+</html>

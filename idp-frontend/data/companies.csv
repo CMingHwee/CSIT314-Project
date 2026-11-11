@@ -1,0 +1,4 @@
+id,accountId,companyName,registrationNumber,address,contactEmail,description
+1,2,Studio Example Pte Ltd,2026XXXXXXK,"10 Example Road, #05-01, Singapore 000000",hello@studio-example.com,"Residential and small-office interior design, from first concept and space planning through to handover."
+2,6,Oakline Design,201912345A,"3 Timber Lane, #02-07, Singapore 000011",studio@oakline.example.com,"Warm, minimalist homes built around natural materials and soft light."
+3,7,Northlight Interiors,201845678B,"88 Harbour Walk, #12-03, Singapore 000022",hello@northlight.example.com,"Calm, Japandi-inspired spaces with clever storage for compact flats."

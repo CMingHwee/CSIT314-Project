@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Portal · IDP Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-area="admin-public" data-tables="user_accounts">
+  <header class="public-top">
+    <div class="logo" aria-hidden="true">LOGO</div>
+    IDP Platform · Admin Portal
+  </header>
+
+  <main class="public-main">
+    <!-- User Admin Log In -->
+    <section class="card login-card">
+      <div id="page-banner"></div>
+      <h1>User Admin log in</h1>
+      <p class="subtitle">Sign in to the administrative dashboard.</p>
+
+      <div id="page-content">
+        <form id="login-form" novalidate>
+          <div class="field" data-field="username">
+            <label for="username">Username</label>
+            <input id="username" name="username" autocomplete="username">
+            <span class="field-error"></span>
+          </div>
+          <div class="field" data-field="password">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" autocomplete="current-password">
+            <span class="field-error"></span>
+          </div>
+          <button class="btn btn-primary" type="submit">Login</button>
+        </form>
+      </div>
+
+      <p class="public-foot">
+        <a href="index.html">Home</a> · <a href="login.html">Not a User Admin? Main login</a> · <a href="demo-data.html">Manage demo CSV data</a>
+      </p>
+    </section>
+  </main>
+
+<script src="js/data/CsvStore.js"></script>
+<script src="js/util/validation.js"></script>
+<script src="js/util/session.js"></script>
+<script src="js/entity/UserAccount.js"></script>
+<script src="js/controller/UserAdminLoginController.js"></script>
+<script src="js/boundary/ui.js"></script>
+<script src="js/boundary/Layout.js"></script>
+<script src="js/boundary/UserAdminLoginPage.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Search User Profiles · IDP Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-area="admin" data-nav="user-profiles" data-tables="user_accounts,user_profiles">
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main">
+    <header class="page-header">
+      <div>
+        <div class="breadcrumb"><a href="user-profiles.html">User Profiles</a> / Search Profiles</div>
+        <h1>Search User Profiles</h1>
+      </div>
+      <div class="user-chip" id="user-chip"></div>
+    </header>
+
+    <nav class="tabs tabs-top" aria-label="User Profiles">
+      <a href="user-profiles.html">All Profiles</a>
+      <a href="create-profile.html">Create Profile</a>
+      <a href="search-profiles.html" aria-current="page">Search Profiles</a>
+    </nav>
+
+    <div id="page-banner"></div>
+
+    <div id="page-content">
+      <!-- Search User Profiles -->
+      <form class="card" id="search-form" novalidate role="search">
+        <div class="search-row">
+          <fieldset class="field field-seg" style="border:0;padding:0;margin:0">
+            <legend style="font-size:12px;font-weight:600;margin-bottom:6px">Search by</legend>
+            <div class="segmented">
+              <label><input type="radio" name="by" value="company" checked> Company Name</label>
+              <label><input type="radio" name="by" value="location"> Location</label>
+            </div>
+          </fieldset>
+          <div class="field field-term" data-field="term">
+            <label for="term">Company name or location</label>
+            <input id="term" name="term" placeholder="e.g. Studio Example, Tampines" autocomplete="off">
+            <span class="field-error"></span>
+          </div>
+          <button class="btn btn-primary btn-small" type="submit">Search</button>
+        </div>
+      </form>
+
+      <section class="card" id="results-card" hidden aria-live="polite">
+        <div class="card-head">
+          <p class="section-label" id="results-title"></p>
+          <button class="btn btn-secondary btn-small" type="button" id="clear-btn">Clear search</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>User</th><th>Role</th><th>Company</th><th>Location</th><th>Status</th>
+                  <th><span class="visually-hidden">Action</span></th></tr>
+            </thead>
+            <tbody id="results-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<script src="js/data/CsvStore.js"></script>
+<script src="js/util/validation.js"></script>
+<script src="js/util/session.js"></script>
+<script src="js/entity/UserAccount.js"></script>
+<script src="js/entity/UserProfile.js"></script>
+<script src="js/controller/SearchUserProfileController.js"></script>
+<script src="js/controller/UserAdminLogoutController.js"></script>
+<script src="js/boundary/ui.js"></script>
+<script src="js/boundary/UserAdminLogoutPage.js"></script>
+<script src="js/boundary/Layout.js"></script>
+<script src="js/boundary/SearchUserProfilePage.js"></script>
+</body>
+</html>

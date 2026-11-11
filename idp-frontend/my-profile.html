@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Profile · IDP Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-area="customer" data-nav="profile" data-tables="user_accounts,companies,projects,shortlists,user_profiles">
+<header class="topnav" id="topnav"></header>
+
+<main class="customer-main">
+  <div id="page-banner"></div>
+
+  <div id="page-content">
+    <section class="card profile-head">
+      <div id="profile-photo"></div>
+      <div class="who">
+        <strong id="profile-name"></strong>
+        <span id="profile-email"></span>
+      </div>
+      <span class="pill" id="profile-role"></span>
+    </section>
+
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" id="tab-shortlist" aria-controls="panel-shortlist" aria-selected="true">My Shortlist</button>
+      <button type="button" role="tab" id="tab-account" aria-controls="panel-account" aria-selected="false">Account details</button>
+    </div>
+
+    <!-- View Shortlist + Search Shortlist -->
+    <section class="card" id="panel-shortlist" role="tabpanel" aria-labelledby="tab-shortlist">
+      <form id="search-form" novalidate role="search" hidden>
+        <div class="search-row">
+          <div class="field field-term" data-field="term">
+            <label for="term" class="visually-hidden">Search your saved projects</label>
+            <input id="term" name="term" placeholder="Search your saved projects" autocomplete="off">
+            <span class="field-error"></span>
+          </div>
+          <button class="btn btn-primary btn-small" type="submit" style="margin-top:0">Search</button>
+        </div>
+      </form>
+
+      <div class="card-head" style="margin-top:16px">
+        <p class="section-label" id="shortlist-title" aria-live="polite"></p>
+        <button class="btn btn-secondary btn-small" type="button" id="clear-search" hidden>Clear search</button>
+      </div>
+      <div class="card-grid" id="shortlist-grid"></div>
+
+      <div class="empty-state" id="shortlist-empty" hidden>
+        <p id="shortlist-empty-text"></p>
+        <a class="btn btn-primary" href="browse-projects.html" id="browse-link">Browse projects</a>
+      </div>
+    </section>
+
+    <section class="card narrow" id="panel-account" role="tabpanel" aria-labelledby="tab-account" hidden>
+      <dl class="details">
+        <div><dt>Username</dt><dd id="a-username"></dd></div>
+        <div><dt>Email</dt><dd id="a-email"></dd></div>
+        <div><dt>Phone</dt><dd id="a-phone"></dd></div>
+        <div><dt>Role</dt><dd id="a-role"></dd></div>
+        <div><dt>Status</dt><dd id="a-status"></dd></div>
+      </dl>
+    </section>
+  </div>
+</main>
+
+<script src="js/data/CsvStore.js"></script>
+<script src="js/util/validation.js"></script>
+<script src="js/util/session.js"></script>
+<script src="js/entity/UserAccount.js"></script>
+<script src="js/entity/CompanyInfo.js"></script>
+<script src="js/entity/Project.js"></script>
+<script src="js/entity/UserProfile.js"></script>
+<script src="js/entity/Shortlist.js"></script>
+<script src="js/controller/ViewShortlistController.js"></script>
+<script src="js/controller/SearchShortlistController.js"></script>
+<script src="js/controller/LogoutController.js"></script>
+<script src="js/boundary/ui.js"></script>
+<script src="js/boundary/LogoutPage.js"></script>
+<script src="js/boundary/Layout.js"></script>
+<script src="js/boundary/ViewShortlistPage.js"></script>
+<script src="js/boundary/SearchShortlistPage.js"></script>
+<script>
+  Layout.start(session => {
+    // Profile header + Account details tab (read-only; customers cannot edit their profile here)
+    const account = UserAccount.findById(session.accountId);
+    UI.el('profile-name').textContent = account.getUsername();
+    const myProfile = UserProfile.findByAccountId(session.accountId);
+    UI.el('profile-photo').innerHTML = UI.photo(myProfile ? myProfile.getPhoto() : '',
+      myProfile ? myProfile.getFullName() : account.getUsername());
+    UI.el('profile-email').textContent = account.getEmail();
+    UI.el('profile-role').textContent = account.getRole();
+    UI.el('a-username').textContent = account.getUsername();
+    UI.el('a-email').textContent = account.getEmail();
+    UI.el('a-phone').textContent = account.getPhone() || '—';
+    UI.el('a-role').textContent = account.getRole();
+    UI.el('a-status').innerHTML = UI.statusPill(account.getStatus());
+
+    const tabs = { shortlist: UI.el('tab-shortlist'), account: UI.el('tab-account') };
+    const show = key => {
+      for (const [k, tab] of Object.entries(tabs)) {
+        tab.setAttribute('aria-selected', String(k === key));
+        UI.el(`panel-${k}`).hidden = k !== key;
+      }
+    };
+    tabs.shortlist.addEventListener('click', () => show('shortlist'));
+    tabs.account.addEventListener('click', () => show('account'));
+
+    const view = new ViewShortlistPage(session);
+    if (view.displayPage()) new SearchShortlistPage(session, view).displayPage();
+  });
+</script>
+</body>
+</html>
